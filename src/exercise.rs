@@ -110,7 +110,7 @@ impl Drop for FileHandle {
 }
 
 impl Exercise {
-    pub fn compile(&self) -> Result<CompiledExercise<'_>, ExerciseOutput> {
+    pub fn compile(&self) -> Result<CompiledExercise, ExerciseOutput> {
         let cmd = match self.mode {
             Mode::Compile => Command::new("rustc")
                 .args(&[self.path.to_str().unwrap(), "-o", &temp_file()])
